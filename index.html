@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body contextment="return false">
+    <style>
+        button{
+            background-color: #5356
+        }
+    </style>
+    <ul class = 'firstUl'> 
+        <li>!</li>
+        <li>!</li>
+        <li>!</li>
+        <li>!</li>
+    </ul>
+    <button type="button">Добавить один li в список</button>
+
+
+    <ul class = 'secondUl'> 
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script> 
+        const btn = document.body.querySelector('button'); 
+        const ul1 = document.querySelector('.firstUl');
+        btn.onclick = function(event){
+            let li = document.createElement('li');
+            li.textContent = 'пункт'
+            ul1.appendChild(li);
+        }
+        ul1.onclick = function(event){
+            let target = event.target;
+            if( target.tageName = 'LI'){
+                target.textContent = target.textContent + '!'
+            }
+        }
+        const ul2 = document.querySelector('.secondUl');
+        let lis = ul2.querySelectorAll('li')
+        for( let i = 0; i < ul2.childElementCount; i++){
+            lis[i].textContent = i
+        }
+
+        ul2.onclick = function(event){
+            let target = event.target;
+            if(target.tagName = 'LI'){
+                let previous = target.previousElementSibling;
+                let previousNumber = Number.parseInt(previous.textContent);
+                let next = target.nextElementSibling;
+                let nextNumber = Number.parseInt(next.textContent);
+                target.textContent = nextNumber + previousNumber;
+            }
+        }
+        ul2.oncontextmenu = function(event){
+            event.preventDefault()
+            let target = event.target;
+            if(target.tagName = 'LI'){
+                let previous = target.previousElementSibling;
+                let previousNumber = Number.parseInt(previous.textContent);
+                let next = target.nextElementSibling;
+                let nextNumber = Number.parseInt(next.textContent);
+                target.textContent = nextNumber * previousNumber;
+            }
+        }
+        
+
+
+    </script>
+</body>
+</html>
